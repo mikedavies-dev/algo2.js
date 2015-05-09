@@ -4,58 +4,91 @@ var AlgoJS;
 (function (AlgoJS) {
     var Types;
     (function (Types) {
-        var Bag = (function () {
-            function Bag() {
+        /*
+        Internal node class used in linked list structures
+        */
+        var LinkedListNode = (function () {
+            function LinkedListNode(item, next) {
+                this.item = item;
+                this.next = next;
             }
-            Bag.prototype.add = function (item) {
-            };
-            Bag.prototype.isEmpty = function () {
-                return true;
-            };
-            Bag.prototype.size = function () {
-                return 0;
-            };
-            return Bag;
+            return LinkedListNode;
         })();
-        Types.Bag = Bag;
+        /*
+        Linked list implementation of a stack
+        */
         var Stack = (function () {
             function Stack() {
-                this.items = new Array(10);
-                this.length = 0;
+                this.first = null;
+                this.count = 0;
             }
             Stack.prototype.push = function (item) {
-                if (this.items.length == this.length)
-                    this.resize(this.length * 2);
-                this.items[this.length++] = item;
+                this.first = new LinkedListNode(item, this.first);
+                this.count++;
             };
             Stack.prototype.pop = function () {
-                if (this.isEmpty())
+                if (this.size() == 0)
                     return null;
-                var result = this.items[--this.length];
-                if (this.length > 0 && this.length == this.items.length / 2)
-                    this.resize(this.items.length / 2);
-                return result;
+                // get the return item
+                var item = this.first.item;
+                // set the new head
+                this.first = this.first.next;
+                this.count--;
+                return item;
             };
             Stack.prototype.peek = function () {
-                if (this.isEmpty())
+                if (this.size() == 0)
                     return null;
-                return this.items[this.length];
+                return this.first.item;
             };
-            Stack.prototype.isEmpty = function () {
-                return this.length == 0;
-            };
-            Stack.prototype.resize = function (newSize) {
-                var arr = new Array(newSize);
-                for (var i = 0; i < this.items.length; i++)
-                    arr[i] = this.items[i];
-                this.items = arr;
+            Stack.prototype.forEach = function (callback) {
+                for (var node = this.first; node != null; node = node.next)
+                    callback(node.item);
             };
             Stack.prototype.size = function () {
-                return this.length;
+                return this.count;
             };
             return Stack;
         })();
         Types.Stack = Stack;
+        var Queue = (function () {
+            function Queue() {
+                this.count = 0;
+                this.first = null;
+                this.last = null;
+            }
+            Queue.prototype.enqueue = function (item) {
+                // add a new item to the end of the list
+                var newLast = new LinkedListNode(item, null);
+                if (this.last != null)
+                    this.last.next = newLast;
+                this.last = newLast;
+                if (this.first == null)
+                    this.first = this.last;
+                this.count++;
+            };
+            Queue.prototype.dequeue = function () {
+                if (this.first == null)
+                    return null;
+                // get the result
+                var result = this.first.item;
+                // set the new first
+                this.first = this.first.next;
+                if (this.first == null)
+                    this.last = null;
+                this.count--;
+                return result;
+            };
+            Queue.prototype.forEach = function (callback) {
+                for (var node = this.first; node != null; node = node.next)
+                    callback(node.item);
+            };
+            Queue.prototype.size = function () {
+                return this.count;
+            };
+            return Queue;
+        })();
+        Types.Queue = Queue;
     })(Types = AlgoJS.Types || (AlgoJS.Types = {}));
 })(AlgoJS || (AlgoJS = {}));
 /* Sorting */

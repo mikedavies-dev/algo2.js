@@ -1,7 +1,8 @@
 console.log('Hello world');
 var Algo = require("./algo");
-var stack = new Algo.Types.Stack();
-stack.push("first item");
-var item = stack.pop();
-console.log("done");
+var queue = new Algo.Types.Queue();
+for (var index = 0; index < 10; index++)
+    queue.enqueue(index);
+for (var index = 0; index < 10; index++)
+    queue.dequeue();
 //# sourceMappingURL=app.js.map

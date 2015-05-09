@@ -3,72 +3,131 @@
 /* Container Types */
 
 module AlgoJS.Types {
-    export class Bag {
-        public add(item) {
-        }
+    
+    
+    /*
+    Internal node class used in linked list structures
+    */
 
-        public isEmpty(): boolean {
-            return true;
-        }
+    class LinkedListNode {
+        item: any;
+        next: LinkedListNode;
 
-        public size(): number {
-            return 0;
+        constructor(item: any, next: LinkedListNode) {
+            this.item = item;
+            this.next = next;
         }
     }
 
+    interface Itterate1 {
+        (val1: Object): void
+    }
+    
+    /*
+    Linked list implementation of a stack
+    */
+
     export class Stack {
 
-        items: any[];
-        length: number;
-
+        first: LinkedListNode;
+        count: number;
+        
         constructor() {
-            this.items = new Array(10);
-            this.length = 0;
+            this.first = null;
+            this.count = 0;
+        }
+        
+        public push(item): void {
+            this.first = new LinkedListNode(item, this.first);
+            this.count++;
         }
 
-        public push(item) {
-            if (this.items.length == this.length)
-                this.resize(this.length * 2);
+        public pop(): any {
 
-            this.items[this.length++] = item;
-        }
-
-        public pop() {
-
-            if (this.isEmpty())
+            if (this.size() == 0)
                 return null;
 
-            var result = this.items[--this.length];
+            // get the return item
+            var item = this.first.item;
 
-            if (this.length > 0 && this.length == this.items.length / 2)
-                this.resize(this.items.length / 2);
+            // set the new head
+            this.first = this.first.next;
+            this.count--;
 
-            return result;
+            return item;
         }
 
-        public peek() {
+        public peek(): any {
 
-            if (this.isEmpty())
+            if (this.size() == 0)
                 return null;
 
-            return this.items[this.length];
+            return this.first.item;
         }
 
-        public isEmpty(): boolean {
-            return this.length == 0;
-        }
-
-        private resize(newSize): void {
-            var arr = new Array(newSize);
-
-            for (var i = 0; i < this.items.length; i++)
-                arr[i] = this.items[i];
-
-            this.items = arr;
+        public forEach(callback: Itterate1): void {
+            for (var node = this.first; node != null; node = node.next)
+                callback(node.item);
         }
 
         public size(): number {
-            return this.length;
+            return this.count;
+        }
+    }
+
+    export class Queue {
+
+        count: number;
+        first: LinkedListNode;
+        last: LinkedListNode;
+
+        constructor() {
+            this.count = 0;
+            this.first = null;
+            this.last = null;
+        }
+
+        public enqueue(item: any): void {
+
+            // add a new item to the end of the list
+            var newLast = new LinkedListNode(item, null);
+
+            if (this.last != null)
+                this.last.next = newLast;
+
+            this.last = newLast;
+
+            if (this.first == null)
+                this.first = this.last;
+            
+            this.count++;
+        }
+
+        public dequeue(): any {
+
+            if (this.first == null)
+                return null;
+
+            // get the result
+            var result = this.first.item;
+
+            // set the new first
+            this.first = this.first.next;
+
+            if (this.first == null)
+                this.last = null;
+
+            this.count--;
+            return result;
+        }
+
+        public forEach(callback: Itterate1): void {
+            for (var node = this.first; node != null; node = node.next)
+                callback(node.item);
+        }
+
+        public size(): number {
+            return this.count;
         }
     }
 }
