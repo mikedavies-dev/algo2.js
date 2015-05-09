@@ -1,0 +1,22 @@
+{
+  "name": "algo2.js",
+  "version": "0.0.0",
+  "description": "algo2.js",
+  "main": "app.js",
+  "author": {
+    "name": "Mike Davies",
+    "email": "miked@antfx.com"
+  },
+  "keywords": [
+    "algorithm",
+    "data-structures",
+    "sorting",
+    "search"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0"
+  }
+}
