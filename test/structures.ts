@@ -66,7 +66,7 @@ describe("Stack", function() {
 
 describe("Queue", function () {
 
-    it("Create a stack and add an item + check size", function () {
+    it("Create a queue and add an item + check size", function () {
         var queue = new Algo.Types.Queue();
         queue.enqueue("first item");
         expect(queue.size()).to.equal(1);
@@ -101,4 +101,32 @@ describe("Queue", function () {
             counter++;
         });
     });
+});
+
+describe("Bag", function () {
+
+    it("Create a bag and add an item + check size", function () {
+        var bag = new Algo.Types.Bag();
+        bag.add("first item");
+        expect(bag.size()).to.equal(1);
+    });
+
+    it("Iterate through the results", function () {
+        var bag = new Algo.Types.Bag();
+
+        for (var index = 0; index < 10; index++)
+            bag.add(index);
+
+        expect(bag.size()).to.equal(10);
+
+        var counter = 9;
+
+        bag.forEach(function (item) {
+            expect(item).to.equal(counter);
+            counter--;
+        });
+
+        expect(counter).to.equal(-1);
+    });
+    
 });

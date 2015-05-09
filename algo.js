@@ -17,6 +17,28 @@ var AlgoJS;
         /*
         Linked list implementation of a stack
         */
+        var Bag = (function () {
+            function Bag() {
+                this.first = null;
+                this.count = 0;
+            }
+            Bag.prototype.add = function (item) {
+                this.first = new LinkedListNode(item, this.first);
+                this.count++;
+            };
+            Bag.prototype.forEach = function (callback) {
+                for (var node = this.first; node != null; node = node.next)
+                    callback(node.item);
+            };
+            Bag.prototype.size = function () {
+                return this.count;
+            };
+            return Bag;
+        })();
+        Types.Bag = Bag;
+        /*
+        Linked list implementation of a stack
+        */
         var Stack = (function () {
             function Stack() {
                 this.first = null;
@@ -51,6 +73,9 @@ var AlgoJS;
             return Stack;
         })();
         Types.Stack = Stack;
+        /*
+        Linked list implementation of a stack
+        */
         var Queue = (function () {
             function Queue() {
                 this.count = 0;

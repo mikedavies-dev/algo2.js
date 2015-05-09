@@ -27,6 +27,35 @@ module AlgoJS.Types {
     Linked list implementation of a stack
     */
 
+    export class Bag {
+
+        first: LinkedListNode;
+        count: number;
+
+        constructor() {
+            this.first = null;
+            this.count = 0;
+        }
+
+        public add(item): void {
+            this.first = new LinkedListNode(item, this.first);
+            this.count++;
+        }
+
+        public forEach(callback: Itterate1): void {
+            for (var node = this.first; node != null; node = node.next)
+                callback(node.item);
+        }
+
+        public size(): number {
+            return this.count;
+        }
+    }
+
+    /*
+    Linked list implementation of a stack
+    */
+
     export class Stack {
 
         first: LinkedListNode;
@@ -74,6 +103,10 @@ module AlgoJS.Types {
             return this.count;
         }
     }
+
+    /*
+    Linked list implementation of a stack
+    */
 
     export class Queue {
 
