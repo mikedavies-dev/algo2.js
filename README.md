@@ -1,16 +1,16 @@
 ﻿# Data Structures / Algorithms for Node.js
 
-# Installation
+## Installation
 
 TODO
 
-# Data Structures
+## Data Structures
 
-## Stack
+### Stack
 
 Sack is implemented via a linked list
 
-## Queue
+### Queue
 
 Queue is implemented via a linked list
 
@@ -25,10 +25,10 @@ for (var index = 0; index < 10; index++)
     queue.dequeue();
 ```
 
-# Algorithms
+## Algorithms
 
-## Sorting
+### Sorting
 
-### Bubble
-### Merge
-### Insertion
+#### Bubble
+#### Merge
+#### Insertion
