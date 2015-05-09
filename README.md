@@ -1,4 +1,4 @@
-﻿# Algo2.js: Data structures and algorithms for Node
+﻿# Node Data structures and algorithms
 
 # Installation
 
