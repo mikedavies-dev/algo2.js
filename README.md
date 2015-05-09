@@ -1,4 +1,4 @@
-﻿# Node Data structures and algorithms
+﻿# Data Structures / Algorithms for Node.js
 
 # Installation
 
