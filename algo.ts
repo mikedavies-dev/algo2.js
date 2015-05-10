@@ -1,5 +1,40 @@
 ﻿/// <reference path="scripts/typings/node/node.d.ts" />
 
+/*
+Copyright Mike Davies <http://antfx.com>
+Time/space complexities from http://bigocheatsheet.com/
+*/
+
+/*
+
+TODO
+
+Types
+
+> PriorityQueue
+> LinkedList
+> HashTable
+
+Sort
+
+> Quick
+> Selection
+> Shell
+
+Search
+
+> BinarySearch
+> BinarySearchTree
+> BalancedSearchTree
+
+Graphs
+
+> Shortest Paths
+
+Strings
+
+*/
+
 /* Container Types */
 
 module AlgoJS.Types {
@@ -174,7 +209,7 @@ module AlgoJS {
     }
 
     export class Sort {
-
+        
         private static Swap(data: Object[], index1, index2) {
             var temp = data[index1];
             data[index1] = data[index2];
@@ -193,8 +228,11 @@ module AlgoJS {
 		The process is repeated until a pass in performed in which the 'swapped' flag is not set
 		
 		Performance:
-			Best: O(n^2)
+			Best: O(n)
 			Average: O(n^2)
+            Worst: O(n^2)
+
+            Space: O(1)
 		*/
 
         public static Bubble(data: Object[], isLess: IsLessSortComparer) {
@@ -231,8 +269,13 @@ module AlgoJS {
 		that element into the current array index
 		
 		Performance:
-			Best: 
-			Average: 
+			
+            Best: O(n log(n))
+			Average: O(n log(n))
+            Worst: O(n log(n))
+
+            Space: O(n)
+
 		*/
 
         public static Merge(data: Object[], isLess: IsLessSortComparer) {
@@ -288,8 +331,12 @@ module AlgoJS {
 		if value is	greater than the current value they are swapped
 		
 		Performance:
-			Best: 
-			Average: 
+
+			Best: O(n)
+			Average: O(n^2)
+            Worst: O(n^2)
+
+            Space: O(1)
 		
 		*/
 
@@ -303,6 +350,39 @@ module AlgoJS {
                 }
 
                 data[inner] = nextValue;
+            }
+        }
+
+        /*
+        Selection Sort
+
+        Iterate the data list from I = 0 to data.length, for each I iterate
+        from I+1 to N to find the smallest value in the array. If found exchange
+        with I
+
+        Performance:
+
+			Best: O(n^2)
+			Average: O(n^2)
+            Worst: O(n^2)
+
+            Space: O(1)
+
+        */
+
+        public static Selection(data: Object[], isLess: IsLessSortComparer) {
+
+            for (var index = 0; index < data.length; index++) {
+
+                for (var inner = index + 1; inner < data.length; inner++) {
+                    var min = index;
+
+                    if (isLess(data[inner], data[min]))
+                        min = inner;
+
+                    if (min != index)
+                        this.Swap(data, min, index);
+                }
             }
         }
     }

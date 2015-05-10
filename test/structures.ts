@@ -71,6 +71,7 @@ describe("Queue", function () {
         queue.enqueue("first item");
         expect(queue.size()).to.equal(1);
     });
+    
 
     it("Enqueue + dequeue (check order)", function () {
         var queue = new Algo.Types.Queue();

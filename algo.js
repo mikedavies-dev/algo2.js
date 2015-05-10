@@ -1,4 +1,37 @@
 /// <reference path="scripts/typings/node/node.d.ts" />
+/*
+Copyright Mike Davies <http://antfx.com>
+Time/space complexities from http://bigocheatsheet.com/
+*/
+/*
+
+TODO
+
+Types
+
+> PriorityQueue
+> LinkedList
+> HashTable
+
+Sort
+
+> Quick
+> Selection
+> Shell
+
+Search
+
+> BinarySearch
+> BinarySearchTree
+> BalancedSearchTree
+
+Graphs
+
+> Shortest Paths
+
+Strings
+
+*/
 /* Container Types */
 var AlgoJS;
 (function (AlgoJS) {
@@ -139,8 +172,11 @@ var AlgoJS;
         The process is repeated until a pass in performed in which the 'swapped' flag is not set
         
         Performance:
-            Best: O(n^2)
+            Best: O(n)
             Average: O(n^2)
+            Worst: O(n^2)
+
+            Space: O(1)
         */
         Sort.Bubble = function (data, isLess) {
             var swapped = false, passes = 0;
@@ -169,8 +205,13 @@ var AlgoJS;
         that element into the current array index
         
         Performance:
-            Best:
-            Average:
+            
+            Best: O(n log(n))
+            Average: O(n log(n))
+            Worst: O(n log(n))
+
+            Space: O(n)
+
         */
         Sort.Merge = function (data, isLess) {
             if (data.length <= 1)
@@ -208,8 +249,12 @@ var AlgoJS;
         if value is	greater than the current value they are swapped
         
         Performance:
-            Best:
-            Average:
+
+            Best: O(n)
+            Average: O(n^2)
+            Worst: O(n^2)
+
+            Space: O(1)
         
         */
         Sort.Insertion = function (data, isLess) {
@@ -219,6 +264,33 @@ var AlgoJS;
                     data[inner] = data[inner - 1];
                 }
                 data[inner] = nextValue;
+            }
+        };
+        /*
+        Selection Sort
+
+        Iterate the data list from I = 0 to data.length, for each I iterate
+        from I+1 to N to find the smallest value in the array. If found exchange
+        with I
+
+        Performance:
+
+            Best: O(n^2)
+            Average: O(n^2)
+            Worst: O(n^2)
+
+            Space: O(1)
+
+        */
+        Sort.Selection = function (data, isLess) {
+            for (var index = 0; index < data.length; index++) {
+                for (var inner = index + 1; inner < data.length; inner++) {
+                    var min = index;
+                    if (isLess(data[inner], data[min]))
+                        min = inner;
+                    if (min != index)
+                        this.Swap(data, min, index);
+                }
             }
         };
         return Sort;
