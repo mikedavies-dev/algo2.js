@@ -15,9 +15,7 @@ var stack = new Algo.Types.Stack();
         
 for (var index = 0; index < 10; index++)
     stack.push(index);
-
-expect(stack.size()).to.equal(10);
-        
+       
 for (var index = 9; index >= 0; index--)
     expect(stack.pop()).to.equal(index);
 ```
