@@ -127,6 +127,7 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 Algo.Sort.Insertion(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
+```
 
 #### Selection Sort
 
