@@ -145,6 +145,7 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 Algo.Sort.Selection(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
+```
 
 #### Quick Sort
 
@@ -162,6 +163,7 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 Algo.Sort.Quick(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
+```
 
 #### Quick Sort (3 way)
 
@@ -179,6 +181,7 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 Algo.Sort.Quick3Way(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
+```
 
 #### Shell Sort
 
@@ -196,6 +199,7 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 Algo.Sort.Shell(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
+```
 
 ## TODO
 
