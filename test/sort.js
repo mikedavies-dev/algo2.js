@@ -21,7 +21,7 @@ describe("Bubble Sort", function () {
         expect(data[data.length - 1]).to.equal("tom");
     });
 });
-describe("Merge Sort (TopDown)", function () {
+describe("Merge Sort (Top Down)", function () {
     it("should sort an int array", function () {
         var data = [654, 42, 66, 3, 12, 54, 76, 44];
         Algo.Sort.MergeTopDown(data, function (val1, val2) {
@@ -39,7 +39,7 @@ describe("Merge Sort (TopDown)", function () {
         expect(data[data.length - 1]).to.equal("tom");
     });
 });
-describe("Merge Sort (BottomUp)", function () {
+describe("Merge Sort (Bottom Up)", function () {
     it("should sort an int array", function () {
         var data = [654, 42, 66, 3, 12, 54, 76, 44];
         Algo.Sort.MergeBottomUp(data, function (val1, val2) {

@@ -30,7 +30,7 @@ describe("Bubble Sort", function() {
     });
 });
 
-describe("Merge Sort (TopDown)", function() {
+describe("Merge Sort (Top Down)", function() {
 
     it("should sort an int array", function () {
 		var data = [654,42,66,3,12,54,76, 44];
@@ -55,7 +55,7 @@ describe("Merge Sort (TopDown)", function() {
     });
 });
 
-describe("Merge Sort (BottomUp)", function () {
+describe("Merge Sort (Bottom Up)", function () {
 
     it("should sort an int array", function () {
         var data = [654, 42, 66, 3, 12, 54, 76, 44];
