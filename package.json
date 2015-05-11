@@ -1,11 +1,11 @@
 {
   "name": "algo2",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "Algorithms and data structures for Node",
   "main": "inded.js",
   "author": {
     "name": "Mike Davies",
-    "email": "miked@antfx.com"
+    "email": "info@antfx.com"
   },
   "keywords": [
     "algorithm",
@@ -19,5 +19,9 @@
   "devDependencies": {
     "chai": "^2.3.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/ant-fx/algo2.js.git"
+  }
 }
