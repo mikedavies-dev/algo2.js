@@ -6,5 +6,5 @@
 /// <reference path="./sort.ts" />
 
 var expect = require("chai").expect;
-import Algo = require("../algo");
+import Algo = require("../index");
  

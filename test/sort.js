@@ -2,7 +2,7 @@
 /// <reference path="../Scripts/typings/node/node.d.ts" />
 /// <reference path="../Scripts/typings/chai/chai.d.ts" />
 var expect = require("chai").expect;
-var Algo = require("../algo");
+var Algo = require("../index");
 describe("Bubble Sort", function () {
     it("should sort an int array", function () {
         var data = [654, 42, 66, 3, 12, 54, 76];

@@ -397,4 +397,4 @@ var AlgoJS;
     AlgoJS.Sort = Sort;
 })(AlgoJS || (AlgoJS = {}));
 module.exports = AlgoJS;
-//# sourceMappingURL=algo.js.map
+//# sourceMappingURL=index.js.map

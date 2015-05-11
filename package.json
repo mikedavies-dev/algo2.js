@@ -1,8 +1,8 @@
 {
-  "name": "algo2.js",
-  "version": "0.0.0",
-  "description": "algo2.js",
-  "main": "app.js",
+  "name": "algo2",
+  "version": "0.0.2",
+  "description": "Algorithms and data structures for Node",
+  "main": "inded.js",
   "author": {
     "name": "Mike Davies",
     "email": "miked@antfx.com"
@@ -18,5 +18,6 @@
   },
   "devDependencies": {
     "chai": "^2.3.0"
-  }
+  },
+  "license": "MIT"
 }

@@ -3,7 +3,7 @@
 /// <reference path="../Scripts/typings/chai/chai.d.ts" />
 
 var expect = require("chai").expect;
-import Algo = require("../algo");
+import Algo = require("../index");
 
 describe("Stack", function() {
 

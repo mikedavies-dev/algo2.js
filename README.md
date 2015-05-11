@@ -2,7 +2,13 @@
 
 ## Installation
 
-TODO
+```
+npm install algo2
+```
+
+```javascript
+var Algo = require("algo2");
+```
 
 ## Data Structures
 
@@ -17,7 +23,7 @@ for (var index = 0; index < 10; index++)
     stack.push(index);
        
 for (var index = 9; index >= 0; index--)
-    expect(stack.pop()).to.equal(index);
+    stack.pop();
 ```
 
 ### Queue
@@ -25,7 +31,6 @@ for (var index = 9; index >= 0; index--)
 Queue is implemented via a linked list
 
 ```javascript
-var Algo = require("algo2");
 var queue = new Algo.Types.Queue();
 
 for (var index = 0; index < 10; index++)
@@ -73,7 +78,7 @@ Algo.Sort.Bubble(data,(val1: string, val2: string) => {
 }); 
 ```
 
-#### Merge (Top Down)
+#### Merge Sort (Top Down)
 
 ```javascript
 var data = [654,42,66,3,12,54,76];
@@ -91,7 +96,7 @@ Algo.Sort.MergeTopDown(data,(val1: string, val2: string) => {
 }); 
 ```
 
-#### Merge (Bottom Up)
+#### Merge Sort (Bottom Up)
 
 ```javascript
 var data = [654,42,66,3,12,54,76];
@@ -109,12 +114,14 @@ Algo.Sort.MergeBottomUp(data,(val1: string, val2: string) => {
 }); 
 ```
 
-#### Insertion Sort
+
+
+#### Shell Sort
 
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.Insertion(data,(val1: number, val2: number) => {
+Algo.Sort.Shell(data,(val1: number, val2: number) => {
 	return val1 - val2; 
 });
 ```
@@ -122,25 +129,7 @@ Algo.Sort.Insertion(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.Insertion(data,(val1: string, val2: string) => {
-	return val1.localeCompare(val2); 
-}); 
-```
-
-#### Selection Sort
-
-```javascript
-var data = [654,42,66,3,12,54,76];
-		
-Algo.Sort.Selection(data,(val1: number, val2: number) => {
-	return val1 - val2; 
-});
-```
-
-```javascript
-var data = ["jerry", "tom", "daffy", "micky", "goofey"];
-		
-Algo.Sort.Selection(data,(val1: string, val2: string) => {
+Algo.Sort.Shell(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
 ```
@@ -177,24 +166,6 @@ Algo.Sort.Quick3Way(data,(val1: number, val2: number) => {
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
 Algo.Sort.Quick3Way(data,(val1: string, val2: string) => {
-	return val1.localeCompare(val2); 
-}); 
-```
-
-#### Shell Sort
-
-```javascript
-var data = [654,42,66,3,12,54,76];
-		
-Algo.Sort.Quick3Way(data,(val1: number, val2: number) => {
-	return val1 - val2; 
-});
-```
-
-```javascript
-var data = ["jerry", "tom", "daffy", "micky", "goofey"];
-		
-Algo.Sort.Shell(data,(val1: string, val2: string) => {
 	return val1.localeCompare(val2); 
 }); 
 ```

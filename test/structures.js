@@ -2,7 +2,7 @@
 /// <reference path="../Scripts/typings/node/node.d.ts" />
 /// <reference path="../Scripts/typings/chai/chai.d.ts" />
 var expect = require("chai").expect;
-var Algo = require("../algo");
+var Algo = require("../index");
 describe("Stack", function () {
     it("Create a stack and add an item + check size", function () {
         var stack = new Algo.Types.Stack();
