@@ -2,10 +2,14 @@
 
 import Algo = require("./algo");
 
-var queue = new Algo.Types.Queue();
+var data2 = [20, 42, 66, 3, 12, 54, 76, 44, 1];
 
-for (var index = 0; index < 10; index++)
-    queue.enqueue(index);
+console.log(data2);
 
-for (var index = 0; index < 10; index++)
-    queue.dequeue();
+Algo.Sort.Quick3Way(data2,(val1: number, val2: number) => {
+    return val1 - val2;
+});
+
+
+
+console.log(data2);
