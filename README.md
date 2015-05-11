@@ -7,7 +7,7 @@ npm install algo2
 ```
 
 [![NPM](https://nodei.co/npm/algo2.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/algo2/)
-
+ 
 ```javascript
 var Algo = require("algo2");
 ```
