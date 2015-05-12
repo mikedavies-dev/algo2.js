@@ -86,7 +86,7 @@ bag.forEach(function (item) {
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.Bubble(data,(val1: number, val2: number) => {
+Algo.Sort.Bubble(data, function(val1, val2) {
 	return val1 - val2; 
 });
 ```
@@ -94,7 +94,7 @@ Algo.Sort.Bubble(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.Bubble(data,(val1: string, val2: string) => {
+Algo.Sort.Bubble(data, function(val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
 ```
@@ -104,7 +104,7 @@ Algo.Sort.Bubble(data,(val1: string, val2: string) => {
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.MergeTopDown(data,(val1: number, val2: number) => {
+Algo.Sort.MergeTopDown(data, function(val1, val2) {
 	return val1 - val2; 
 });
 ```
@@ -112,7 +112,7 @@ Algo.Sort.MergeTopDown(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.MergeTopDown(data,(val1: string, val2: string) => {
+Algo.Sort.MergeTopDown(data, function(val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
 ```
@@ -122,7 +122,7 @@ Algo.Sort.MergeTopDown(data,(val1: string, val2: string) => {
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.MergeBottomUp(data,(val1: number, val2: number) => {
+Algo.Sort.MergeBottomUp(data, function(val1, val2) {
 	return val1 - val2; 
 });
 ```
@@ -130,19 +130,17 @@ Algo.Sort.MergeBottomUp(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.MergeBottomUp(data,(val1: string, val2: string) => {
+Algo.Sort.MergeBottomUp(data, function(val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
 ```
-
-
 
 #### Shell Sort
 
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.Shell(data,(val1: number, val2: number) => {
+Algo.Sort.Shell(data, function(val1, val2) {
 	return val1 - val2; 
 });
 ```
@@ -150,7 +148,7 @@ Algo.Sort.Shell(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.Shell(data,(val1: string, val2: string) => {
+Algo.Sort.Shell(data, function(val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
 ```
@@ -160,7 +158,7 @@ Algo.Sort.Shell(data,(val1: string, val2: string) => {
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.Quick(data,(val1: number, val2: number) => {
+Algo.Sort.Quick(data, function(val1, val2) {
 	return val1 - val2; 
 });
 ```
@@ -168,7 +166,7 @@ Algo.Sort.Quick(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.Quick(data,(val1: string, val2: string) => {
+Algo.Sort.Quick(data,function (val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
 ```
@@ -178,7 +176,7 @@ Algo.Sort.Quick(data,(val1: string, val2: string) => {
 ```javascript
 var data = [654,42,66,3,12,54,76];
 		
-Algo.Sort.Quick3Way(data,(val1: number, val2: number) => {
+Algo.Sort.Quick3Way(data, function(val1, val2) {
 	return val1 - val2; 
 });
 ```
@@ -186,7 +184,7 @@ Algo.Sort.Quick3Way(data,(val1: number, val2: number) => {
 ```javascript
 var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
-Algo.Sort.Quick3Way(data,(val1: string, val2: string) => {
+Algo.Sort.Quick3Way(data, function (val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
 ```
