@@ -99,6 +99,40 @@ Algo.Sort.Bubble(data, function(val1, val2) {
 }); 
 ```
 
+#### Insertion Sort
+
+```javascript
+var data = [654,42,66,3,12,54,76];
+		
+Algo.Sort.Insertion(data, function(val1, val2) {
+	return val1 - val2; 
+});
+```
+
+```javascript
+var data = ["jerry", "tom", "daffy", "micky", "goofey"];
+		
+Algo.Sort.Insertion(data, function(val1, val2) {
+	return val1.localeCompare(val2); 
+}); 
+
+#### Selection Sort
+
+```javascript
+var data = [654,42,66,3,12,54,76];
+		
+Algo.Sort.Selection(data, function(val1, val2) {
+	return val1 - val2; 
+});
+```
+
+```javascript
+var data = ["jerry", "tom", "daffy", "micky", "goofey"];
+		
+Algo.Sort.Selection(data, function(val1, val2) {
+	return val1.localeCompare(val2); 
+}); 
+
 #### Merge Sort (Top Down)
 
 ```javascript
