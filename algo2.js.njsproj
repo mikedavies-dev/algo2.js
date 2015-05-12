@@ -33,6 +33,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".travis.yml" />
     <TypeScriptCompile Include="index.ts" />
     <TypeScriptCompile Include="app.ts" />
     <Content Include="package.json" />
