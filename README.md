@@ -115,6 +115,7 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 Algo.Sort.Insertion(data, function(val1, val2) {
 	return val1.localeCompare(val2); 
 }); 
+```
 
 #### Selection Sort
 
@@ -131,7 +132,8 @@ var data = ["jerry", "tom", "daffy", "micky", "goofey"];
 		
 Algo.Sort.Selection(data, function(val1, val2) {
 	return val1.localeCompare(val2); 
-}); 
+});
+``` 
 
 #### Merge Sort (Top Down)
 
