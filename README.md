@@ -1,4 +1,6 @@
-﻿# Data Structures / Algorithms for Node.js
+﻿## Data Structures / Algorithms for Node.js
+
+A collection of data structures and algorithms for JavaScript
 
 ## Installation
 
@@ -6,11 +8,14 @@
 npm install algo2
 ```
 
-[![NPM](https://nodei.co/npm/algo2.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/algo2/)
- 
 ```javascript
 var Algo = require("algo2");
 ```
+
+[![Build Status](https://travis-ci.org/ant-fx/algo2.js.svg?branch=master)](https://travis-ci.org/ant-fx/algo2.js)
+
+[![NPM](https://nodei.co/npm/algo2.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/algo2/)
+ 
 
 ## Data Structures
 
@@ -21,11 +26,18 @@ Sack is implemented via a linked list
 ```javascript
 var stack = new Algo.Types.Stack();
         
-for (var index = 0; index < 10; index++)
+for (var index = 0; index <= 10; index++)
     stack.push(index);
+
+stack.forEach(function (item) {
+    // use item (10, 9, 8, 7, ...)
+});
        
-for (var index = 9; index >= 0; index--)
-    stack.pop();
+stack.pop(); // 10
+stack.pop(); // 9
+stack.pop(); // 8
+stack.pop(); // ..
+    
 ```
 
 ### Queue
@@ -35,11 +47,18 @@ Queue is implemented via a linked list
 ```javascript
 var queue = new Algo.Types.Queue();
 
-for (var index = 0; index < 10; index++)
+for (var index = 0; index <= 10; index++)
     queue.enqueue(index);
 
-for (var index = 0; index < 10; index++)
-    queue.dequeue();
+stack.forEach(function (item) {
+    // use item (0, 1, 2, 3, 4, ...)
+});
+
+stack.dequeue(); // 0
+stack.dequeue(); // 1
+stack.dequeue(); // 2
+stack.dequeue(); // ..
+
 ```
 
 ### Bag
