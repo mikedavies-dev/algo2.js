@@ -179,12 +179,21 @@ var AlgoJS;
         
         */
         Sort.Insertion = function (data, compare) {
+            for (var index = 1; index < data.length; index++) {
+                for (var inner = index; inner > 0 && data[inner] < data[inner - 1]; inner--) {
+                    this.Swap(data, inner, inner - 1);
+                }
+            }
+            /*
             for (var index = 0; index < data.length; index++) {
+
                 var nextValue = data[index];
+
                 for (var inner = index; inner > 0 && compare(nextValue, data[inner - 1]) < 0; inner--)
                     data[inner] = data[inner - 1];
+
                 data[inner] = nextValue;
-            }
+            }*/
         };
         /*
         Shell sort
