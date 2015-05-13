@@ -92,4 +92,65 @@ describe("Bag", function () {
         expect(counter).to.equal(-1);
     });
 });
+describe("Priority Queue", function () {
+    it("Create and add an item + check size", function () {
+        var q = new Algo.Types.PriorityQueue(function (val1, val2) {
+            return val1 - val2;
+        });
+        var toAdd = [22, 3, 1, 32432, 1, 2, 544, 2, 1, 23, 1, 3, 1, 223, 3];
+        toAdd.forEach(function (e) {
+            q.enqueue(e);
+        });
+        expect(q.size()).to.equal(15);
+    });
+    it("clear the queue", function () {
+        var q = new Algo.Types.PriorityQueue(function (val1, val2) {
+            return val1 - val2;
+        });
+        var toAdd = [22, 3, 1, 32432, 1, 2, 544, 2, 1, 23, 1, 3, 1, 223, 3];
+        toAdd.forEach(function (e) {
+            q.enqueue(e);
+        });
+        expect(q.size()).to.equal(15);
+        q.clear();
+        expect(q.size()).to.equal(0);
+    });
+    it("iterate the queue in order", function () {
+        var compare = function (val1, val2) {
+            return val1 - val2;
+        };
+        var q = new Algo.Types.PriorityQueue(compare);
+        var toAdd = [];
+        for (var index = 0; index < 1000; index++)
+            toAdd.push(Math.floor(Math.random() * 1000) % 1000);
+        toAdd.forEach(function (e) {
+            q.enqueue(e);
+        });
+        // sort the results and expect the queue to return the same values
+        var sorted = toAdd.slice();
+        sorted.sort(compare);
+        var count = 0;
+        sorted.forEach(function (val) {
+            expect(q.dequeue()).to.equal(val);
+            count++;
+        });
+        expect(count).to.equal(sorted.length);
+    });
+    it("peek an item in the queue", function () {
+        var compare = function (val1, val2) {
+            return val1 - val2;
+        };
+        var q = new Algo.Types.PriorityQueue(compare);
+        var toAdd = [];
+        for (var index = 0; index < 1000; index++)
+            toAdd.push(Math.floor(Math.random() * 1000) % 1000);
+        toAdd.forEach(function (e) {
+            q.enqueue(e);
+        });
+        // sort the results and expect the queue to return the same values
+        var sorted = toAdd.slice();
+        sorted.sort(compare);
+        expect(q.peek()).to.equal(sorted[0]);
+    });
+});
 //# sourceMappingURL=structures.js.map

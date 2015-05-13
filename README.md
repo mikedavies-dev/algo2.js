@@ -77,6 +77,41 @@ bag.forEach(function (item) {
 });
 ```
 
+### Priority Queue
+
+Implemented using a HEAP structure, the heap is represented using an array. The array will resize its self as data is added and removed.
+
+```javascript
+var queue = new Algo.Types.PriorityQueue(function (val1, val2) {
+	// return val2 - val1; // low values first
+    return val1 - val2; // high values first
+});
+
+queue.add(12);
+queue.add(31);
+queue.add(200);
+queue.add(2);
+queue.add(32);
+queue.add(15);
+
+// return the size of the queue
+queue.size(); // 6
+
+// get top without removing
+queue.peek(); // 200
+
+// remove
+queue.dequeue(); // 200
+queue.dequeue(); // 32
+queue.dequeue(); // 31
+queue.dequeue(); // 15
+queue.dequeue(); // ..
+
+// clear the queue
+queue.clear(); 
+
+```
+
 ## Algorithms
 
 ### Sorting
@@ -229,7 +264,6 @@ Algo.Sort.Quick3Way(data, function (val1, val2) {
 
 ### Types
 
-* PriorityQueue
 * LinkedList
 * HashTable
 
@@ -244,7 +278,4 @@ Algo.Sort.Quick3Way(data, function (val1, val2) {
 * BalancedSearchTree
 
 ### Graphs
-
-* Shortest Paths
-
 ### Strings

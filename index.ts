@@ -168,6 +168,154 @@ module AlgoJS.Types {
             return this.count;
         }
     }
+
+    
+
+    /*
+    The priority queue uses an array based heap to store the values
+
+    http://en.wikipedia.org/wiki/Binary_heap#/media/File:Binary_Heap_with_Array_Implementation.JPG
+
+    A node (I) children can be accessed at Ix2 and (Ix2)+1
+    A node (I) parent can be accessed at (int)I/2
+
+    ** NOTE, array index starts at 1, not 0, otherwise child/parent calculations don't work
+    i.e. 0x2 = 0
+
+    */
+
+    interface PriorityQueueComparer {
+        (val1: Object, val2: Object): number
+    }
+
+    export class PriorityQueue {
+        
+        count: number;
+        data: Object[];
+        compare: PriorityQueueComparer;
+
+        constructor(isGreater: PriorityQueueComparer) {
+            this.clear();
+            this.compare = isGreater;
+        }
+
+        // returns the current next item but do not remove it from the queue
+        public peek(): Object {
+            if (this.size() < 0)
+                return null;
+
+            return this.data[1];
+        }
+
+        public printArray() {
+            console.log("data", this.data);
+        }
+
+        // return the next item and remove it from the queue
+        public dequeue(): Object {
+
+            if (this.size() < 0)
+                return null;
+
+            // get the first item
+            var ret = this.data[1];
+
+            // move the last item to the top
+            this.swap(1, this.count-1);
+
+            // remove old reference to alst
+            this.data[this.count - 1] = null;
+
+            // decrement size
+            this.count--;
+
+            // rearrange the list (top down)
+            this.sink(1);
+
+            // free up memory
+            if (this.count <= this.data.length / 2)
+                this.data = this.data.slice(0, (this.data.length / 2)+1);
+
+            return ret;
+        }
+
+        public poll(): Object {
+            return this.dequeue();
+        }
+        
+        // add a new item to the queue
+        public enqueue(item: Object): void {
+            
+            // MDDO, check logic here
+            this.data[this.count] = item;
+
+            // rearrange the list (bottom up)
+            this.swim(this.count);
+
+            this.count++;
+        }
+
+        public offer(item: Object) : void {
+            this.enqueue(item);
+        }
+        
+        // clear the queue of all its contents
+        public clear(): void {
+            this.data = [0];
+            this.count = 1;
+        }
+        
+        public size(): number {
+            return this.count - 1;
+        }
+
+        isGreater(index1: number, index2: number) {
+            return this.compare(this.data[index1], this.data[index2]) > 0;
+        }
+
+        // check the parent node recursivley, if the parent is less than the 
+        // child swap them then move up again until we get to the top
+
+        swim(index: number): void {
+
+            // after adding an item check the child's parent, 
+            // if its less than us swap the move up a level
+
+            while (index > 1) {
+
+                if (this.isGreater(Math.floor(index / 2), index))
+                    this.swap(Math.floor(index / 2), index);
+
+                index = Math.floor(index / 2);
+            }
+        }
+        
+        sink(index: number): void {
+
+            // do we have at least one child?
+            while (this.count > index * 2) {
+
+                var toCheck = index * 2;
+
+                // do we have a second child? if so compare
+                if (toCheck < this.count-1 && this.isGreater(toCheck, toCheck + 1))
+                    toCheck++;
+
+                // check the values2
+                if (this.isGreater(index, toCheck))
+                    this.swap(index, toCheck);
+                
+                // check next set of children
+                index = toCheck;
+            }
+        }
+
+        swap(index1: number, index2: number) {
+            var temp = this.data[index1];
+            this.data[index1] = this.data[index2];
+            this.data[index2] = temp;
+        }
+    }
 }
 
 /* Sorting */
@@ -391,7 +539,7 @@ module AlgoJS {
 
                 // finally swap the right value with pivot to put pivot in its correct location
                 this.Swap(data, low, right);
-
+                
                 return right;
             }
 

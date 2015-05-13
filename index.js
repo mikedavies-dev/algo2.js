@@ -118,6 +118,96 @@ var AlgoJS;
             return Queue;
         })();
         Types.Queue = Queue;
+        var PriorityQueue = (function () {
+            function PriorityQueue(isGreater) {
+                this.clear();
+                this.compare = isGreater;
+            }
+            // returns the current next item but do not remove it from the queue
+            PriorityQueue.prototype.peek = function () {
+                if (this.size() < 0)
+                    return null;
+                return this.data[1];
+            };
+            PriorityQueue.prototype.printArray = function () {
+                console.log("data", this.data);
+            };
+            // return the next item and remove it from the queue
+            PriorityQueue.prototype.dequeue = function () {
+                if (this.size() < 0)
+                    return null;
+                // get the first item
+                var ret = this.data[1];
+                // move the last item to the top
+                this.swap(1, this.count - 1);
+                // remove old reference to alst
+                this.data[this.count - 1] = null;
+                // decrement size
+                this.count--;
+                // rearrange the list (top down)
+                this.sink(1);
+                // free up memory
+                if (this.count <= this.data.length / 2)
+                    this.data = this.data.slice(0, (this.data.length / 2) + 1);
+                return ret;
+            };
+            PriorityQueue.prototype.poll = function () {
+                return this.dequeue();
+            };
+            // add a new item to the queue
+            PriorityQueue.prototype.enqueue = function (item) {
+                // MDDO, check logic here
+                this.data[this.count] = item;
+                // rearrange the list (bottom up)
+                this.swim(this.count);
+                this.count++;
+            };
+            PriorityQueue.prototype.offer = function (item) {
+                this.enqueue(item);
+            };
+            // clear the queue of all its contents
+            PriorityQueue.prototype.clear = function () {
+                this.data = [0];
+                this.count = 1;
+            };
+            PriorityQueue.prototype.size = function () {
+                return this.count - 1;
+            };
+            PriorityQueue.prototype.isGreater = function (index1, index2) {
+                return this.compare(this.data[index1], this.data[index2]) > 0;
+            };
+            // check the parent node recursivley, if the parent is less than the 
+            // child swap them then move up again until we get to the top
+            PriorityQueue.prototype.swim = function (index) {
+                // after adding an item check the child's parent, 
+                // if its less than us swap the move up a level
+                while (index > 1) {
+                    if (this.isGreater(Math.floor(index / 2), index))
+                        this.swap(Math.floor(index / 2), index);
+                    index = Math.floor(index / 2);
+                }
+            };
+            PriorityQueue.prototype.sink = function (index) {
+                while (this.count > index * 2) {
+                    var toCheck = index * 2;
+                    // do we have a second child? if so compare
+                    if (toCheck < this.count - 1 && this.isGreater(toCheck, toCheck + 1))
+                        toCheck++;
+                    // check the values2
+                    if (this.isGreater(index, toCheck))
+                        this.swap(index, toCheck);
+                    // check next set of children
+                    index = toCheck;
+                }
+            };
+            PriorityQueue.prototype.swap = function (index1, index2) {
+                var temp = this.data[index1];
+                this.data[index1] = this.data[index2];
+                this.data[index2] = temp;
+            };
+            return PriorityQueue;
+        })();
+        Types.PriorityQueue = PriorityQueue;
     })(Types = AlgoJS.Types || (AlgoJS.Types = {}));
 })(AlgoJS || (AlgoJS = {}));
 /* Sorting */
