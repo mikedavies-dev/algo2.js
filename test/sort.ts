@@ -204,3 +204,28 @@ describe("Quick Sort (3way)", function () {
         expect(data[data.length - 1]).to.equal("tom");
     });
 });
+
+describe("Heap Sort", function () {
+
+    it("should sort an int array", function () {
+        var data = [654, 42, 66, 3, 12, 54, 76, 44];
+
+        Algo.Sort.Heap(data,(val1: number, val2: number) => {
+            return val1 - val2;
+        });
+
+        expect(data[0]).to.equal(3);
+        expect(data[data.length - 1]).to.equal(654);
+    });
+
+    it("should sort a string array", function () {
+        var data = ["jerry", "tom", "daffy", "micky", "goofey"];
+
+        Algo.Sort.Heap(data,(val1: string, val2: string) => {
+            return val1.localeCompare(val2);
+        });
+
+        expect(data[0]).to.equal("daffy");
+        expect(data[data.length - 1]).to.equal("tom");
+    });
+});

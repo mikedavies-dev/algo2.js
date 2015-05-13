@@ -169,8 +169,6 @@ module AlgoJS.Types {
         }
     }
 
-    
-
     /*
     The priority queue uses an array based heap to store the values
 
@@ -246,7 +244,7 @@ module AlgoJS.Types {
         // add a new item to the queue
         public enqueue(item: Object): void {
             
-            // MDDO, check logic here
+            // set the new array item
             this.data[this.count] = item;
 
             // rearrange the list (bottom up)
@@ -335,6 +333,7 @@ module AlgoJS {
         }
 		
 		/*
+
 		Bubble Sort (or sinking sort) 	
 		
 		The bubble sort works by iterating through the array and checking the index and index+1
@@ -350,6 +349,7 @@ module AlgoJS {
 			Average: O(n^2)
             Worst: O(n^2)
             Space: O(1)
+
 		*/
 
         public static Bubble(data: Object[], compare: SortComparer) {
@@ -375,6 +375,7 @@ module AlgoJS {
         }
 		
 		/*
+
 		Insertion sort
 		
 		Works starting with a single array of 1 and assuming it to be 
@@ -412,6 +413,7 @@ module AlgoJS {
         }
 
         /*
+
 		Shell sort
 		
 		One of the disadvantages of the insertion sort is that smaller values to the right of the array 
@@ -459,6 +461,7 @@ module AlgoJS {
         }
 
         /*
+
         Selection Sort
 
         Iterate the data list from I = 0 to data.length, for each I iterate
@@ -467,8 +470,8 @@ module AlgoJS {
 
         Performance:
 
-			Best: O(n^2)
-			Average: O(n^2)
+            Best: O(n^2)
+            Average: O(n^2)
             Worst: O(n^2)
             Space: O(1)
 
@@ -500,8 +503,8 @@ module AlgoJS {
 
         Performance:
 
-			Best: O(n log(n))
-			Average: O(n log(n))
+            Best: O(n log(n))
+            Average: O(n log(n))
             Worst: O(n^2)
             Space: O(log(n))
 
@@ -558,6 +561,14 @@ module AlgoJS {
             sort(0, data.length - 1);
         }
 
+
+        /*
+
+        The 3 way version of the quick sort improves slightly over the standard quick sort in that it 
+        checks for equal values. If an equal value is encountered no swapping is performed.
+
+        */
+
         public static Quick3Way(data: Object[], compare: SortComparer) {
 
             var sort = (low: number, high: number) => {
@@ -597,24 +608,24 @@ module AlgoJS {
         }
 
         /*
-		    Merge Sort (Top Down)
+        Merge Sort (Top Down)
 		
-		    Recursive function that splits the data into N sets of arrays each with one element. 
-		    These sub arrays of one element can all be considered to be sorted as they only have 
-		    one element.
+        Recursive function that splits the data into N sets of arrays each with one element. 
+        These sub arrays of one element can all be considered to be sorted as they only have 
+        one element.
 		
-		    The algorithm then recombines the arrays into the original array, stepping through
-		    each element of both arrays and looking for the lower element, then putting
-		    that element into the current array index
+        The algorithm then recombines the arrays into the original array, stepping through
+        each element of both arrays and looking for the lower element, then putting
+        that element into the current array index
 		
-		    Performance:
+        Performance:
 			
-                Best: O(n log(n))
-			    Average: O(n log(n))
-                Worst: O(n log(n))
-                Space: O(n)
+            Best: O(n log(n))
+            Average: O(n log(n))
+            Worst: O(n log(n))
+            Space: O(n)
 
-		    */
+        */
 
         public static MergeTopDown(data: Object[], compare: SortComparer) {
 
@@ -638,6 +649,76 @@ module AlgoJS {
 
             // perform the recursive sort
             sort(0, data.length - 1);
+        }
+        
+        /*
+
+        Heap Sort
+
+        The heap sort uses a max heap structure. The first step is to arrange the data so
+        that it forms a valid max-heap. (all values below are lower than those above but
+        dont have to be in order).
+
+        1) This is done by going from I = N/2, I-- and checking node against it's children.
+        If either of the children are larger swap with the largest of the two children, then
+        continue down to the next set of children completing the same process
+
+        2) Once in max-heap valid format we know that the first element is the highest value so we
+        take that value and swap it with the last element in the array data[N-1], then we decrease
+        the heap size and run step 1 again with an index of 0 to check to see if it has any
+        larger children, if so swap (see step 1 above).
+
+        3) We continue this process until our heapsize reaches 1 at which point the array is sorted.
+
+        This sorting algorithm is very attractive because it is relativley fast O(n log(n)) but
+        does not require any additional processing space
+		
+        Performance:
+
+            Best: O(n log(n))
+            Average: O(n log(n))
+            Worst: O(n log(n))
+            Space: O(1)
+
+        */
+
+        public static Heap(data: Object[], compare: SortComparer) {
+
+            var heapSize = data.length;
+
+            var sink = (index: number): void => {
+                
+                // do we have at least one child?
+                while (heapSize - 1 > index * 2) {
+
+                    // calculate first child
+                    var toCheck = (index * 2) + 1;
+
+                    // do we have a second child? if so, is it bigger?
+                    if (toCheck < heapSize - 1 && compare(data[toCheck], data[toCheck + 1]) < 0)
+                        toCheck++;
+
+                    // check the values2
+                    if (compare(data[index], data[toCheck]) < 0)
+                        this.Swap(data, index, toCheck);
+                
+                    // check next set of children
+                    index = toCheck;
+                }
+            }
+
+            // create the max/min-heap, everything after data.length/2 is a leaf
+            for (var index = Math.floor(heapSize / 2); index >= 0; index--)
+                sink(index);
+            
+            for (var index = data.length - 1; index > 0; index--) {
+
+                // swap with the end
+                this.Swap(data, 0, index);
+                
+                heapSize--;
+                sink(0);
+            }
         }
 
         /*
