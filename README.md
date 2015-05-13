@@ -87,12 +87,12 @@ var queue = new Algo.Types.PriorityQueue(function (val1, val2) {
     return val1 - val2; // high values first
 });
 
-queue.add(12);
-queue.add(31);
-queue.add(200);
-queue.add(2);
-queue.add(32);
-queue.add(15);
+queue.enqueue(12);
+queue.enqueue(31);
+queue.enqueue(200);
+queue.enqueue(2);
+queue.enqueue(32);
+queue.enqueue(15);
 
 // return the size of the queue
 queue.size(); // 6
