@@ -260,16 +260,30 @@ Algo.Sort.Quick3Way(data, function (val1, val2) {
 }); 
 ```
 
+#### Heap Sort
+
+```javascript
+var data = [654,42,66,3,12,54,76];
+		
+Algo.Sort.Heap(data, function(val1, val2) {
+	return val1 - val2; 
+});
+```
+
+```javascript
+var data = ["jerry", "tom", "daffy", "micky", "goofey"];
+		
+Algo.Sort.Heap(data, function (val1, val2) {
+	return val1.localeCompare(val2); 
+}); 
+```
+
 ## TODO
 
 ### Types
 
 * LinkedList
 * HashTable
-
-### Sort
-
-* HeapSort
 
 ### Search
 
