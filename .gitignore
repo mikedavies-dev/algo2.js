@@ -78,3 +78,5 @@ $RECYCLE.BIN/
 bin
 obj
 .ntvs_*
+
+/Scripts
